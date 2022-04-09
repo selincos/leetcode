@@ -14,7 +14,7 @@
 
 class Solution {
 public:
-    bool containsDuplicate(vector<int>& nums) {
+    bool containsDuplicate_(vector<int>& nums) {
         int nSize = nums.size();
         std::sort(nums.begin(), nums.end());
         
@@ -25,5 +25,19 @@ public:
         }
         
         return false;
+    }
+    
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_set<int> set_nums;
+        
+        for(int i = 0; i < nums.size(); i++)
+        {
+            set_nums.insert(nums[i]);
+        }
+        
+        if(nums.size() > set_nums.size())
+            return true;
+        else
+            return false;
     }
 };
